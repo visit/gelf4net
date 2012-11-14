@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Visit.Gelf4net</id>
+        <version>1.0.0.0</version>
+        <title>Esilog.Gelf4net</title>
+        <authors>visit</authors>
+        <owners>jjchiw</owners>
+        <projectUrl>https://github.com/visit/gelf4net</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>GELF log4net Appender - graylog2</description>
+        <releaseNotes>GELF log4net Appender - graylog2</releaseNotes>
+        <copyright>Copyright 2012</copyright>
+        <tags>gelf log4net</tags>
+        <dependencies>
+            <dependency id="Log4Net" version="[1.2.11]" />
+            <dependency id="Newtonsoft.Json" version="[4.0.8]" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="gelf4net\bin\release\Esilog.Gelf4net.dll" target="lib\net40-full\Esilog.Gelf4net.dll" />
+    </files>
+</package>
