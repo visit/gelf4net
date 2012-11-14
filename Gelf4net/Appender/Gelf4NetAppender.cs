@@ -252,15 +252,12 @@ namespace Esilog.Gelf4net.Appender
                                                               ? new Dictionary<string, string>()
                                                               : new Dictionary<string, string>(innerAdditionalFields);
 
-            if (loggingEvent.Properties != null)
+			foreach (DictionaryEntry item in loggingEvent.GetProperties())
             {
-                foreach (DictionaryEntry item in loggingEvent.Properties)
+                var key = item.Key as string;
+                if (key != null)
                 {
-                    var key = item.Key as string;
-                    if (key != null)
-                    {
-                        additionalFields.Add(key, item.Value as string);
-                    }
+                    additionalFields.Add(key, item.Value as string);
                 }
             }
 
