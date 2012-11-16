@@ -199,6 +199,8 @@ namespace Esilog.Gelf4net.Appender
 
             Dictionary<string, string> additionalFields = this.GetAdditionalFields(loggingEvent);
 
+			additionalFields.Add("LoggerName", loggingEvent.LoggerName);
+
             string gelfJsonString = new GelfJsonBuilder().BuildFromLoggingEvent(
                 gelfMessage, additionalFields);
 
@@ -257,6 +259,9 @@ namespace Esilog.Gelf4net.Appender
                 var key = item.Key as string;
                 if (key != null)
                 {
+					if (key == "log4netHostName") // already included in GelfMessage
+						continue;
+
                     additionalFields.Add(key, item.Value as string);
                 }
             }
