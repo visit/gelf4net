@@ -259,7 +259,7 @@ namespace Esilog.Gelf4net.Appender
                 var key = item.Key as string;
                 if (key != null)
                 {
-					if (key == "log4netHostName") // already included in GelfMessage
+					if (key == "log4net:HostName") // already included in GelfMessage
 						continue;
 
                     additionalFields.Add(key, item.Value as string);
