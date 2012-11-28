@@ -257,12 +257,12 @@ namespace Esilog.Gelf4net.Appender
 			foreach (DictionaryEntry item in loggingEvent.GetProperties())
             {
                 var key = item.Key as string;
-                if (key != null)
+                if (key != null && item.Value != null)
                 {
 					if (key == "log4net:HostName") // already included in GelfMessage
 						continue;
 
-                    additionalFields.Add(key, item.Value as string);
+                    additionalFields.Add(key, item.Value.ToString());
                 }
             }
 
