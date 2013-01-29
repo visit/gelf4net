@@ -343,7 +343,7 @@ namespace Esilog.Gelf4net.Appender
             {
                 try
                 {
-                    ret = System.Net.Dns.GetHostName();
+                    ret = System.Net.Dns.GetHostEntry("127.0.0.1").HostName;
                 }
                 catch (SocketException)
                 {
