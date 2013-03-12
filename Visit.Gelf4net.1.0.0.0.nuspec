@@ -14,7 +14,7 @@
         <tags>gelf log4net</tags>
         <dependencies>
             <dependency id="Log4Net" version="1.2.11" />
-            <dependency id="Newtonsoft.Json" version="4.0.8" />
+            <dependency id="Newtonsoft.Json" version="4.5.11" />
         </dependencies>
     </metadata>
     <files>
