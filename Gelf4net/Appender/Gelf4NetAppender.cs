@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using Esilog.Gelf4net.Transport;
@@ -280,14 +281,8 @@ namespace Esilog.Gelf4net.Appender
             string ret = Host;
             if (ret == null)
             {
-                try
-                {
-                    ret = System.Net.Dns.GetHostEntry("127.0.0.1").HostName;
-                }
-                catch (SocketException)
-                {
-                    ret = UNKNOWN_HOST;
-                }
+                var ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+                ret = string.Format("{0}.{1}", ipProperties.HostName, ipProperties.DomainName);
             }
 
             return ret;
