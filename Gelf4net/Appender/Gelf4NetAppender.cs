@@ -154,8 +154,15 @@ namespace Esilog.Gelf4net.Appender
             GelfMessage gelfMessage = this.GetGelfMessage(loggingEvent);
 
             Dictionary<string, string> additionalFields = this.GetAdditionalFields(loggingEvent);
-
 			additionalFields.Add("LoggerName", loggingEvent.LoggerName);
+
+            //Allow overriding of Facility field via additional properties
+            string facility = null;
+            if (additionalFields.TryGetValue("Facility", out facility))
+            {
+                additionalFields.Remove("Facility");
+                gelfMessage.Facility = facility;
+            }
 
             string gelfJsonString = new GelfJsonBuilder().BuildFromLoggingEvent(
                 gelfMessage, additionalFields);
