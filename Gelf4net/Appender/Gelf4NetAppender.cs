@@ -188,7 +188,7 @@ namespace Esilog.Gelf4net.Appender
                 FullMesage = fullMessage,
                 Host = this.GetLoggingHostName(),
                 Level = this.GetSyslogSeverity(loggingEvent.Level),
-                Line = string.Empty,
+                Line = 0,
                 ShortMessage = this.GetShortMessage(fullMessage, loggingEvent),
                 TimeStamp = loggingEvent.TimeStamp,
                 Version = GELF_VERSION,
@@ -197,7 +197,10 @@ namespace Esilog.Gelf4net.Appender
             if (this.IncludeLocationInformation)
             {
                 gelfMessage.File = loggingEvent.LocationInformation.FileName;
-                gelfMessage.Line = loggingEvent.LocationInformation.LineNumber;
+                
+                int line = 0;
+                int.TryParse(loggingEvent.LocationInformation.LineNumber, out line);
+                gelfMessage.Line = line;
             }
 
             return gelfMessage;
